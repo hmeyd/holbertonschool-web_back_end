@@ -1,9 +1,10 @@
-export default function FolderManager() {
-    this.folders = ['Documents', 'Images'];
+export default function getNeighborhoodsList() {
+    this.sanFranciscoNeighborhoods = ['SOMA', 'Union Square'];
   
-    this.addFolder = (newFolder) => {
-      this.folders.push(newFolder);
-      return this.folders;
+    // Utilisation de la fonction fléchée pour "addNeighborhood"
+    this.addNeighborhood = (newNeighborhood) => {
+      this.sanFranciscoNeighborhoods.push(newNeighborhood);
+      return this.sanFranciscoNeighborhoods;
     };
-  }
+  }  
   
