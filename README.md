@@ -141,4 +141,3 @@ npm test
 ## Repository
 - **GitHub Repository:** `holbertonschool-web_back_end`
 - **Directory:** `ES6_basic`
-
