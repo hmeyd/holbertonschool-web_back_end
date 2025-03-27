@@ -1,10 +1,9 @@
-/* eslint-disable */
 export default function getNeighborhoodsList() {
     this.sanFranciscoNeighborhoods = ['SOMA', 'Union Square'];
   
-    // Utilisation de la fonction fléchée pour "addNeighborhood"
+    const self = this;
     this.addNeighborhood = (newNeighborhood) => {
-      this.sanFranciscoNeighborhoods.push(newNeighborhood);
-      return this.sanFranciscoNeighborhoods;
+      self.sanFranciscoNeighborhoods.push(newNeighborhood);
+      return self.sanFranciscoNeighborhoods;
     };
-  }  
+  }
