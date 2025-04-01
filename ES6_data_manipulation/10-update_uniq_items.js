@@ -1,5 +1,5 @@
 /* eslint-disable */
-function updateUniqueItems(map) {
+export default function updateUniqueItems(map) {
     if (!(map instanceof Map)) {
       throw new Error('Cannot process');
     }
@@ -12,4 +12,3 @@ function updateUniqueItems(map) {
     
     return map;
   }
-  
