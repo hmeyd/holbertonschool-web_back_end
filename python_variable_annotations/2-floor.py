@@ -4,13 +4,6 @@ import math
 
 
 def floor(x: float) -> int:
-    """
-    Return the largest integer less than or equal to x.
-    
-    Args:
-        x (float): The number to be floored.
-    
-    Returns:
-        int: The largest integer less than or equal to x.
-    """
+    """a type-annotated function which takes a float n as argument
+    and returns the floor of the float."""
     return math.floor(x)
