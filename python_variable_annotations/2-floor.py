@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Module for add function"""
-
+import math
 
 def floor(x: float) -> int:
     """
@@ -12,4 +12,4 @@ def floor(x: float) -> int:
     Returns:
         int: The largest integer less than or equal to x.
     """
-    return int(x) if x >= 0 else int(x) - 1
+    return math.floor(x)
