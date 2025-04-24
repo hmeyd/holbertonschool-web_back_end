@@ -1,16 +1,9 @@
 #!/usr/bin/env python3
-"""Module for add function"""
+"""Module for floor function"""
+import math
 
 
-def concat(str1: str, str2: str):
-    """
-    Concatenate two strings.
-    
-    Args:
-        str1 (str): The first string.
-        str2 (str): The second string.
-    
-    Returns:
-        str: The concatenated string.
-    """
-    return f'{str1}{str2}'
+def floor(n: float) -> int:
+    """a type-annotated function which takes a float n as argument
+    and returns the floor of the float."""
+    return math.floor(n)
