@@ -2,6 +2,7 @@
 """Module for add function"""
 import math
 
+
 def floor(x: float) -> int:
     """
     Return the largest integer less than or equal to x.
