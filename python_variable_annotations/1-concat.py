@@ -13,4 +13,4 @@ def concat(str1: str, str2: str):
     Returns:
         str: The concatenated string.
     """
-    return str1 + str2
+    return f'{str1}{str2}'
