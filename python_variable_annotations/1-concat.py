@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-def concat(str1, str2):
+"""Module for add function"""
+
+
+def concat(str1: str, str2: str):
     """
     Concatenate two strings.
     

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Module for add function"""
+
+
 def floor(x: float) -> int:
     """
     Return the largest integer less than or equal to x.
