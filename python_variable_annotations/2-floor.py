@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module for add function"""
+"""Module for variable annotations"""
 import math
 
 
