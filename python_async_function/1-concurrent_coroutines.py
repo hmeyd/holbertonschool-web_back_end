@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-
 """
-0-basic_async_syntax.py
-This module contains a function that takes an integer max_delay
-and returns a random float between 0 and max_delay after a random delay."""
+1-concurrent_coroutines.py
+
+Ce module contient une coroutine qui exécute plusieurs coroutines
+wait_random en parallèle et retourne la liste des délais obtenus,
+triée de manière ascendante.
+"""
+
 import asyncio
-import random
+from typing import List
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(max_delay, n) -> float:
-    """Returns a list of n random floats between 0 and max_delay after a random delay."""
-    delays = []
-    for _ in range(n):
-        delay = random.uniform(0, max_delay)
-        await asyncio.sleep(delay)
-        delays.append(delay)
-    return delays
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    """
+    Exécute n coroutines wait_random de manière concurrente.
+    """
+    delays = await asyncio.gather(*(wait_random(max_delay) for _ in range(n)))
+    return sorted(delays)
