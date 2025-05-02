@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import csv
+import math
 from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """Return a tuple of start and end index for a given page
-    and page_size."""
+    """Return a tuple of start and end index for a given page and page_size."""
     start = (page - 1) * page_size
     end = page * page_size
     return (start, end)
@@ -30,12 +30,13 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Return the appropriate page of the dataset."""
-        if not isinstance(page, int) or page <= 0:
-            raise ValueError("page must be a positive integer")
-        if not isinstance(page_size, int) or page_size <= 0:
-            raise ValueError("page_size must be a positive integer")
+        assert isinstance(page, int) and page > 0, "page must be a positive integer"
+        assert isinstance(page_size, int) and page_size > 0, "page_size must be a positive integer"
 
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
 
-        return dataset[start_index:end_index] if start_index < len(dataset) else []
+        if start_index >= len(dataset):
+            return []
+
+        return dataset[start_index:end_index]
