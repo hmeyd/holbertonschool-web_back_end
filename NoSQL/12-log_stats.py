@@ -20,8 +20,8 @@ def log_stats():
     print("Methods:")
     for method in methods:
         method_qty = collection.count_documents({"method": method})
-        print(f"\tmethod {method}: {method_qty}")
-    print(f"{status_check} status check")
+        print(f"\t{method} {method_qty}")  # Corrected format here
+    print(f"\tGET /status {status_check}")  # Fixed the status check line to match prompt format
 
 
 if __name__ == "__main__":
