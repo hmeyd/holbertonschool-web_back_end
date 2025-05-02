@@ -42,4 +42,3 @@ class Server:
 
         return [] if start_index >= len(self.dataset()) \
             else self.dataset()[start_index:end_index]
-    
