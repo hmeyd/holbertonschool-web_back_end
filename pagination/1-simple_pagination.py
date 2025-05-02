@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import csv
-import math
 from typing import List, Tuple
 
 
@@ -36,11 +35,7 @@ class Server:
         if not isinstance(page_size, int) or page_size <= 0:
             raise ValueError("page_size must be a positive integer")
 
-
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
 
-        if start_index >= len(dataset):
-            return []
-
-        return dataset[start_index:end_index]
+        return dataset[start_index:end_index] if start_index < len(dataset) else []
