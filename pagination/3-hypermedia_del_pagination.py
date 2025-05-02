@@ -35,12 +35,14 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict[str, Any]:
+    def get_hyper_index(self, index: int = None,
+                        page_size: int = 10) ->Dict[str, Any]:
         """
-        Return a page of the dataset starting at a specific index, resilient to deletions.
+        Return a page of the dataset starting at
+        a specific index, resilient to deletions.
         """
-        assert isinstance(index, int) and index >= 0, "index must be a non-negative integer"
-        assert isinstance(page_size, int) and page_size > 0, "page_size must be a positive integer"
+        assert isinstance(index, int) and index >= 0
+        assert isinstance(page_size, int) and page_size > 0
 
         indexed_data = self.indexed_dataset()
         data = []
