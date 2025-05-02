@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import csv
-import math
 from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """Return a tuple of start and end index for a given page and page_size."""
+    """Return a tuple of start and end index for a given
+    page and page_size."""
     start = (page - 1) * page_size
     end = page * page_size
     return (start, end)
@@ -24,7 +24,7 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset = dataset[1:]  # skip header
+            self.__dataset = dataset[1:]
 
         return self.__dataset
 
@@ -34,6 +34,9 @@ class Server:
         assert page > 0 and page_size > 0
 
         start_index, end_index = index_range(page, page_size)
-        
-        return [] if start_index >= len(self.dataset()) \
-            else self.dataset()[start_index:end_index]
+        dataset = self.dataset()
+
+        if start_index >= len(dataset):
+            return []
+
+        return dataset[start_index:end_index]
