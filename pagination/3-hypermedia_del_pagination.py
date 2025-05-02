@@ -35,29 +35,22 @@ class Server:
             }
         return self.__indexed_dataset
 
-    def get_hyper_index(self, index: int = None,
-                        page_size: int = 10) -> Dict[str, Any]:
-        """
-        Return a page of the dataset starting at
-        a specific index, resilient to deletions.
-        """
-        assert isinstance(index, int) and index >= 0
-        assert isinstance(page_size, int) and page_size > 0
-
-        indexed_data = self.indexed_dataset()
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """Return a dict of data for the page"""
+        next_index = index
         data = []
-        current_index = index
+        indexed_dataset = self.indexed_dataset()
 
-        # Collect page_size valid items starting from current_index
-        while len(data) < page_size and current_index < len(indexed_data):
-            item = indexed_data.get(current_index)
-            if item:
-                data.append(item)
-            current_index += 1
+        assert index is not None and 0 <= index < len(indexed_dataset)
+
+        while len(data) < page_size and next_index < len(indexed_dataset):
+            if next_index in indexed_dataset:
+                data.append(indexed_dataset[next_index])
+            next_index += 1
 
         return {
-            "index": index,
-            "next_index": current_index,
-            "page_size": len(data),
-            "data": data
+            'index': index,
+            'data': data,
+            'page_size': page_size,
+            'next_index': next_index
         }
