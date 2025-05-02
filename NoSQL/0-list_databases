@@ -10,5 +10,6 @@ def list_databases():
     for db in databases:
         print(f"- {db}")
 
+
 if __name__ == "__main__":
     list_databases()
