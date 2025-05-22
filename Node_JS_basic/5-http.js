@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = require('fs');
+const fs = require('fs').promises;
 
 const db = process.argv.slice(2)[0];
 const port = 1245;
@@ -31,30 +31,26 @@ async function countStudents(path) {
   }
 }
 
-const app = http.createServer((req, res) => {
+const app = http.createServer(async (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
   const { url } = req;
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-
   if (url === '/') {
-    res.end('Hello Holberton School!');
+    res.write('Hello Holberton School!');
   } else if (url === '/students') {
-    const filePath = process.argv[2];
-
-    countStudents(filePath)
-      .then((output) => {
-        res.end(`This is the list of our students\n${output}`);
-      })
-      .catch((err) => {
-        res.end('This is the list of our students\n' + err.message);
-      });
-  } else {
-    res.statusCode = 404;
-    res.end('Not found');
+    res.write('This is the list of our students\n');
+    try {
+      const students = await countStudents(db);
+      res.end(students);
+    } catch (error) {
+      res.end(error.message);
+    }
   }
+  res.end();
 });
 
-app.listen(1245);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
 
 module.exports = app;
