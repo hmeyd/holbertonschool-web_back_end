@@ -1,4 +1,4 @@
-const fs = require('nod:fs');
+const fs = require('node:fs');
 
 function countStudents(path) {
   try {
@@ -14,12 +14,12 @@ function countStudents(path) {
       }
       fields[field].push(firstname);
     });
-    console.log(`Number of students: ${total}`);
 
-    for (const [field, list] of Object.entries(studentsByField)) {
-      console.log(`Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`);
+    console.log(`Number of students: ${rows.length}`);
+    for (const [field, students] of Object.entries(fields)) {
+      console.log(`Number of students in ${field}: ${students.length}. List: ${students.join(', ')}`);
     }
-  } catch (error) {
+  } catch (err) {
     throw new Error('Cannot load the database');
   }
 }
