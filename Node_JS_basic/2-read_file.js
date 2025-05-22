@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('nod:fs');
 
 function countStudents(path) {
   try {
@@ -40,3 +40,5 @@ function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 }
+
+module.exports = countStudents;
